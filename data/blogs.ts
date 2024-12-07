@@ -60,7 +60,7 @@ const blogPosts = [
         {
           id: 1,
           commenter: "Zara Iqbal",
-          comment: "This was so helpful. Thank you!",
+          comment: "This was very helpful. Thank you!",
           postedOn: "2024-12-01",
         },
       ],
