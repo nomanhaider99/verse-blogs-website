@@ -1,14 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
-import { FaRegComment } from 'react-icons/fa'
-import { IoIosThumbsUp } from 'react-icons/io'
 import { 
     Card,
     CardHeader,
     CardFooter, 
     CardContent,
-    CardDescription,
-    CardTitle
 } from './card'
 import Button from './Button'
 
@@ -30,7 +26,6 @@ interface BlogProps {
 }
 
 const Blog: React.FC<BlogProps> = ({
-    id,
     postImage,
     subtitle,
     title,

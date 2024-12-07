@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 import Button from './Button';
 import CardDrawer from './CardDrawer';
@@ -15,7 +15,6 @@ interface ServiceCardProps {
 const GuideCard: React.FC<ServiceCardProps> = ({
     description,
     title,
-    id,
     content,
     serial
 }) => {

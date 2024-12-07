@@ -2,8 +2,6 @@
 import React from 'react'
 import HeroImage from '@/public/images/Hero2.jpg'
 import Image from 'next/image'
-import Vector1 from '@/public/images/Vector (1).png'
-import Vector2 from '@/public/images/Vector (2).png'
 import Button from '../ui/Button'
 import { FaArrowRight } from 'react-icons/fa'
 import Modal from '../models/Modal'

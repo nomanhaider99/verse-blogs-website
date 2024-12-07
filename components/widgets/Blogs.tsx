@@ -2,7 +2,6 @@ import React from 'react'
 import Categories from '../ui/Categories'
 import blogPosts from '@/data/blogs'
 import Blog from '../ui/Blog'
-import Trendings from '../ui/Trendings'
 
 const Blogs = () => {
   return (
