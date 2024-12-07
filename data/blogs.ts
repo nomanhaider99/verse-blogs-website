@@ -59,7 +59,7 @@ const blogPosts = [
       comments: [
         {
           id: 1,
-          commenter: "Zara Iqbal",
+          commenter: "Zara Muhammad Iqbal",
           comment: "This was very helpful. Thank you!",
           postedOn: "2024-12-01",
         },
