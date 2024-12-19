@@ -1,4 +1,10 @@
-export const linksData = [
+type LinkItem = {
+    link: string;
+    route?: string;
+    dropdown?: LinkItem[]; 
+};
+
+export const linksData: LinkItem[] = [
     {
         link: 'Home',
         route: '/',
@@ -22,7 +28,6 @@ export const linksData = [
                 ],
             },
         ],
-        route: '/blogs'
     },
     {
         link: 'Write',
@@ -31,7 +36,6 @@ export const linksData = [
             { link: 'My Drafts', route: '/write/drafts' },
             { link: 'Guidelines', route: '/write/guidelines' },
         ],
-        route: '/write'
     },
     {
         link: 'Community',
@@ -40,6 +44,25 @@ export const linksData = [
             { link: 'User Groups', route: '/community/groups' },
             { link: 'Events', route: '/community/events' },
         ],
-        route: '/community'
+    },
+];
+
+export const authenticatedLinksData: LinkItem[] = [
+    {
+        link: 'Blogs',
+        dropdown: [
+            {
+                link: 'My Blogs',
+                route: '/my-blogs',
+            },
+            {
+                link: 'All Blogs',
+                route: '/blogs',
+            },
+        ],
+    },
+    {
+        link: 'Write',
+        route: '/write',
     },
 ];

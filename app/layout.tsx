@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layouts/Header";
 import { Toaster } from "@/components/ui/toaster"
 import Footer from "@/components/layouts/Footer";
+import { currentUser } from "./actions/currentUser";
 
 const font = Figtree({
   subsets: ['latin'],
@@ -20,14 +21,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = currentUser();
+  console.log(user);
   return (
     <html lang="en">
       <body
         className={`${font.className} w-full min-h-screen flex flex-col justify-between bg-white`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <div className="w-full min-h-screen flex flex-col justify-between bg-white">
+          <Header />
+          <div className="py-5">{children}</div>
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>

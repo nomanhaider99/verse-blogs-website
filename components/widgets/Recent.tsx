@@ -51,7 +51,7 @@ const Recent = () => {
                         <Blog
                             author={item.author}
                             comments={item.comments}
-                            id={item.id}
+                            id={item.id as any}
                             postImage={item.postImage}
                             subtitle={item.subtitle}
                             title={item.title}

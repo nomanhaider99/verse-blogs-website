@@ -12,14 +12,25 @@ import {
 import { Label } from './label';
 import { Input } from './input';
 import { FieldValues, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Button from './Button';
 import { createUser } from '@/app/actions/createUser';
 import BeatLoader from "react-spinners/BeatLoader";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { socialSignIn } from '@/app/actions/socialLogin';
+import { FaGoogle } from 'react-icons/fa';
+
+const registerSchema = z.object({
+    name: z.string().min(2, { message: 'Name must be at least 2 characters long' }),
+    email: z.string().email({ message: 'Invalid email address' }),
+    password: z.string().min(6, { message: 'Password must be at least 6 characters long' }),
+});
 
 const RegisterForm = () => {
-    const { register, handleSubmit, resetField, } = useForm({
+    const { register, handleSubmit, resetField, formState: { errors } } = useForm({
+        resolver: zodResolver(registerSchema),
         defaultValues: {
             name: '',
             email: '',
@@ -44,12 +55,13 @@ const RegisterForm = () => {
                 resetField("password");
                 router.refresh();
             })
-            .catch(() => {
+            .catch((err) => {
                 toast({
                     title: "Error: User Creation Failed",
-                    description: "There was an issue creating the user. Please try again.",
+                    description: JSON.stringify(err),
                     variant: 'destructive'
                 });
+                console.log(err);
             })
             .finally(() => {
                 setIsLoading(false);
@@ -78,6 +90,17 @@ const RegisterForm = () => {
             </CardHeader>
             <CardContent className="space-y-2">
                 <form onSubmit={handleSubmit(submitRegisterForm)}>
+                    <div className='flex justify-center'>
+                        <Button
+                            text='Sign with Google'
+                            className='w-[85%]'
+                            outline
+                            isStatic
+                            icon={FaGoogle}
+                            onClick={() => socialSignIn("google")}
+                        />
+                    </div>
+                    <div className='flex justify-center py-2'>OR</div>
                     <div className="space-y-1">
                         <Label htmlFor="name">Name</Label>
                         <Input
@@ -87,6 +110,9 @@ const RegisterForm = () => {
                             {...register('name')}
                             required
                         />
+                        {errors.name && (
+                            <p className="text-red-600 text-sm">{errors.name.message}</p>
+                        )}
                     </div>
                     <div className="space-y-1">
                         <Label htmlFor="email">Email</Label>
@@ -97,6 +123,9 @@ const RegisterForm = () => {
                             {...register('email')}
                             required
                         />
+                        {errors.email && (
+                            <p className="text-red-600 text-sm">{errors.email.message}</p>
+                        )}
                     </div>
                     <div className="space-y-1">
                         <Label htmlFor="password">Password</Label>
@@ -107,6 +136,9 @@ const RegisterForm = () => {
                             {...register('password')}
                             required
                         />
+                        {errors.password && (
+                            <p className="text-red-600 text-sm">{errors.password.message}</p>
+                        )}
                     </div>
                     <CardFooter className="w-full mt-4">
                         <Button

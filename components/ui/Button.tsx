@@ -8,7 +8,7 @@ interface ButtonProps {
     onClick?: () => void;
     className?: string;
     type?: 'submit';
-    isStatic?: boolean
+    isStatic?: boolean,
 }
 
 const Button: React.FC<ButtonProps> = ({
