@@ -23,7 +23,7 @@ export default {
                     console.error("Missing credentials");
                     throw new Error('Invalid credentials!');
                 }
-        
+
                 try {
                     // Fetch the user from the database
                     const user = await db
@@ -31,22 +31,22 @@ export default {
                         .from(users)
                         .where(eq(users.email, credentials.email as string))
                         .then((res) => res[0]);
-        
+
                     if (!user) {
                         console.error("User not found:", credentials.email);
                         throw new Error('User not found');
                     }
-        
+
                     // Check if the password is correct
                     const isCorrectPassword = await compare(credentials.password as string, user.password as string);
                     if (!isCorrectPassword) {
                         console.error("Incorrect password for user:", credentials.email);
                         throw new Error('Invalid credentials!');
                     }
-        
+
                     console.log("User authenticated successfully:", user.email);
                     return user;  // Return the user object if successful
-        
+
                 } catch (error) {
                     console.error("Authentication error:", error);
                     throw new Error('An error occurred during login');
@@ -54,4 +54,5 @@ export default {
             },
         })
     ],
+    secret: process.env.AUTH_SECRET
 } satisfies NextAuthConfig
