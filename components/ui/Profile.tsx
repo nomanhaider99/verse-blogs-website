@@ -3,8 +3,6 @@ import { profiletabs } from '@/data/profiletabs';
 import Image from 'next/image';
 import React from 'react'
 import Avatar from '@/public/images/Avatar.png'
-import { CiLogout } from "react-icons/ci";
-import { logOutuser } from '@/app/actions/logout';
 import Logout from './Logout';
 
 const Profile = async () => {
