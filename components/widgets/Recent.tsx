@@ -3,7 +3,7 @@ import Button from '../ui/Button'
 import Image from 'next/image'
 import RecentImage from '@/public/images/Recent.png'
 import landingBlogPosts from '@/data/landingBlogs'
-import Blog from '../ui/Blog'
+import RBlog from '../ui/RBlog'
 
 const Recent = () => {
     return (
@@ -48,7 +48,7 @@ const Recent = () => {
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {
                     landingBlogPosts.map((item) => (
-                        <Blog
+                        <RBlog
                             author={item.author}
                             comments={item.comments}
                             id={item.id as any}

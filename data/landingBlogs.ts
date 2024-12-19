@@ -1,3 +1,20 @@
+type BlogProps = {
+    id: number | string;
+    title: string;
+    subtitle: string;
+    postImage: string;
+    author: {
+        fullName: string;
+        profileImage: string;
+    };
+    comments: {
+        id: number;
+        commenter: string;
+        comment: string;
+        postedOn: string;
+    }[];
+};
+
 const landingBlogPosts = [
     {
         id: 1,
