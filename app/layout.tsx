@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${font.className} w-full min-h-screen flex flex-col justify-between bg-white`}
       >
         <div className="w-full min-h-screen flex flex-col justify-between bg-white">
-          <Header />
+          {/* <Header /> */}
           <div className="py-5">{children}</div>
           <Footer />
         </div>
