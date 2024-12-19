@@ -36,7 +36,7 @@
     "drizzle-orm": "^0.37.0",
     "lucide-react": "^0.464.0",
     "next": "14.2.10",
-    "next-auth": "^4.24.11",
+    "next-auth": "^5.0.0-beta.25",
     "next-cloudinary": "^6.16.0",
     "novel": "^0.5.0",
     "postgres": "^3.4.5",
