@@ -43,7 +43,7 @@ const Blog: React.FC<BlogProps> = ({
         <Link
             href={`/blogs/${id}`}
         >
-            <Card className='md:w-[30vw] flex flex-col justify-between md:h-[30vw] w-full'>
+            <Card className='md:w-[30vw] hover:scale-105 transition-transform flex flex-col justify-between md:h-[30vw] w-full'>
                 <CardHeader>
                     {image && (
                         <Image
