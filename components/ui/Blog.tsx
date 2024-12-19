@@ -31,23 +31,28 @@ const Blog: React.FC<BlogProps> = ({
     userId
 }) => {
     const [user, setUser] = useState<User | undefined>();
+    
     useEffect(() => {
         const fetchUser = async () => {
-            const userResult = await findUser(userId);
-            setUser(userResult.data[0]);
-        }
+            if (userId) {
+                const userResult = await findUser(userId);
+                setUser(userResult.data[0]);
+            }
+        };
         fetchUser();
-    });
-    
+    }, [userId]);
+
+    if (!id) {
+        return null;
+    }
+
     return (
-        <Link
-            href={`/blogs/${id}`}
-        >
+        <Link href={`/blogs/${id}`}>
             <Card className='md:w-[30vw] hover:scale-105 transition-transform flex flex-col justify-between md:h-[30vw] w-full'>
                 <CardHeader>
                     {image && (
                         <Image
-                            alt=''
+                            alt='Blog image'
                             src={image}
                             width={400}
                             height={400}
@@ -65,7 +70,7 @@ const Blog: React.FC<BlogProps> = ({
                         <div className='flex items-center gap-2'>
                             <div>
                                 <Image
-                                    alt=''
+                                    alt='User Avatar'
                                     src={user?.image || Avatar}
                                     width={30}
                                     height={30}
