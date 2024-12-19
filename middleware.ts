@@ -9,19 +9,19 @@ export default auth((req): any => {
     const isNonAuthRoute = nonAuthorizeRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authorizeRoutes.includes(nextUrl.pathname);
 
-    if (isNonAuthRoute) {
-        if (isLoggedIn) {
-            return Response.redirect(new URL('/blogs', nextUrl));
-        }
-        return null;
-    }
+    // if (isNonAuthRoute) {
+    //     if (isLoggedIn) {
+    //         return Response.redirect(new URL('/blogs', nextUrl));
+    //     }
+    //     return null;
+    // }
 
-    if (isAuthRoute) {
-        if (!isLoggedIn) {
-            return Response.redirect(new URL('/', nextUrl));
-        }
-        return null;
-    }
+    // if (isAuthRoute) {
+    //     if (!isLoggedIn) {
+    //         return Response.redirect(new URL('/', nextUrl));
+    //     }
+    //     return null;
+    // }
 })
 
 export const config = {
