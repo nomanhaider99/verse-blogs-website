@@ -31,11 +31,6 @@ export const linksData: LinkItem[] = [
     },
     {
         link: 'Write',
-        dropdown: [
-            { link: 'New Blog', route: '/write/new' },
-            { link: 'My Drafts', route: '/write/drafts' },
-            { link: 'Guidelines', route: '/write/guidelines' },
-        ],
     },
     {
         link: 'Community',
