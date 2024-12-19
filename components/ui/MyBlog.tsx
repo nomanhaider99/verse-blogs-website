@@ -40,6 +40,10 @@ const MyBlog: React.FC<BlogProps> = ({
         fetchUser();
     });
 
+    if (!id) {
+        return null;
+    }
+
     return (
         <Link
             href={`/blogs/${id}`}

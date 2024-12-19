@@ -36,7 +36,7 @@ const NavLinks = async () => {
                     <DropdownMenuContent>
                       {subItem.dropdown.map((nestedItem, nestedIndex) => (
                         <DropdownMenuItem key={nestedIndex} asChild>
-                          <Link href={nestedItem.route as any}>
+                          <Link href={nestedItem.route || ''}>
                             {nestedItem.link}
                           </Link>
                         </DropdownMenuItem>
@@ -45,7 +45,7 @@ const NavLinks = async () => {
                   </DropdownMenu>
                 ) : (
                   <DropdownMenuItem key={subIndex} asChild>
-                    <Link href={subItem.route as any}>
+                    <Link href={subItem.route || ''}>
                       {subItem.link}
                     </Link>
                   </DropdownMenuItem>
@@ -56,7 +56,7 @@ const NavLinks = async () => {
         ) : (
           <Link
             className="text-zinc-800 hover:text-darkblue"
-            href={item.route as any}
+            href={item.route || ''}
             key={index}
           >
             {item.link}
