@@ -27,4 +27,4 @@ To get started with Pulse, follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/nomanhaider99/pulse-blogging-website
+git clone https://github.com/nomanhaider99/pulse-blogs-website
