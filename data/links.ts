@@ -14,25 +14,6 @@ export const linksData: LinkItem[] = [
         route: '/about',
     },
     {
-        link: 'Blogs',
-        dropdown: [
-            { link: 'All Blogs', route: '/blogs' },
-            { link: 'Trending Blogs', route: '/blogs/trending' },
-            {
-                link: 'Categories',
-                dropdown: [
-                    { link: 'Technology', route: '/blogs/categories/technology' },
-                    { link: 'Lifestyle', route: '/blogs/categories/lifestyle' },
-                    { link: 'Education', route: '/blogs/categories/education' },
-                    { link: 'Entertainment', route: '/blogs/categories/entertainment' },
-                ],
-            },
-        ],
-    },
-    {
-        link: 'Write',
-    },
-    {
         link: 'Community',
         dropdown: [
             { link: 'Discussions', route: '/community/discussions' },

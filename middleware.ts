@@ -1,13 +1,18 @@
-import { auth } from "@/auth"
+import { auth } from "@/auth";
 import { authorizeRoutes, nonAuthorizeRoutes } from "./routes";
 
 export default auth((req): any => {
     const { nextUrl } = req;
-    const isLoggedIn = !!req.auth
-    console.log("LOGGED IN: ", isLoggedIn)
+    const isLoggedIn = !!req.auth;
+    console.log("LOGGED IN: ", isLoggedIn);
 
-    const isNonAuthRoute = nonAuthorizeRoutes.includes(nextUrl.pathname);
-    const isAuthRoute = authorizeRoutes.includes(nextUrl.pathname);
+    const pathname = nextUrl.pathname;
+
+    const isNonAuthRoute = nonAuthorizeRoutes.includes(pathname);
+
+    const isAuthRoute =
+        authorizeRoutes.includes(pathname) ||
+        authorizeRoutes.some(route => pathname.startsWith(route) && !route.includes("[id]"));
 
     if (isNonAuthRoute) {
         if (isLoggedIn) {
@@ -16,13 +21,15 @@ export default auth((req): any => {
         return null;
     }
 
-    if (isAuthRoute) {
+    if (isAuthRoute || pathname.startsWith('/edit/')) {
         if (!isLoggedIn) {
             return Response.redirect(new URL('/', nextUrl));
         }
         return null;
     }
-})
+
+    return null; 
+});
 
 export const config = {
     matcher: [
@@ -30,4 +37,4 @@ export const config = {
         '/(api|trpc)(.*)',
         '/'
     ],
-}
+};
