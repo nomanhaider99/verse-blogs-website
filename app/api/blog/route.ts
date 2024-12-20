@@ -6,7 +6,6 @@ export async function POST(request: Request) {
     try {
         const { title, description, userId, content  } = await request.json();
 
-        // Ensure all necessary fields are provided
         if (!title || !description || !content || !userId) {
             return NextResponse.json(
                 { message: 'Missing required fields: title, body, or userId' },
