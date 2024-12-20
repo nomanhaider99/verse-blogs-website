@@ -25,7 +25,7 @@ const Blogs = () => {
     };
 
     fetchData();
-  }, [setBlogs]);
+  }, [ blogs ]);
 
   if (isLoading) {
     return (
