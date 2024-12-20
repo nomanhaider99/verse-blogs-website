@@ -8,4 +8,7 @@ export const nonAuthorizeRoutes = [
 export const authorizeRoutes = [
     '/write',
     '/write/new',
+    '/edit',
+    '/my-blogs',
+    '/'
 ]
