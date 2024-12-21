@@ -8,6 +8,7 @@ export async function GET(request: Request) {
         const allBlogs = await db
         .select()
         .from(blogs)
+        .orderBy(desc(blogs.createdAt));
 
         return NextResponse.json({
             data: allBlogs
