@@ -19,5 +19,6 @@ export const currentUser = async () => {
 
     const user = userArray[0] || null;
 
+    console.log(`LOGGEDIN: `, user);
     return user; 
 };

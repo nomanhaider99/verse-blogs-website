@@ -40,7 +40,6 @@ const Writer = () => {
   };
 
   const submitForm = async (data: FieldValues) => {
-    console.log(data);
     const user = await currentUser();
 
     if (!user || !user.id) {
@@ -51,7 +50,7 @@ const Writer = () => {
       });
       return;
     }
-
+    console.log(user.name)
     const dataWithUserId = {
       ...data,
       userId: user.id,

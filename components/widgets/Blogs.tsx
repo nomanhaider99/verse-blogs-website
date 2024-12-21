@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Categories from '../ui/Categories';
 import Blog, { BlogProps } from '../ui/Blog';
 import BeatLoader from 'react-spinners/BeatLoader';
 
@@ -25,7 +24,7 @@ const Blogs = () => {
     };
 
     fetchData();
-  }, [ blogs ]);
+  }, []);
 
   if (isLoading) {
     return (
