@@ -10,5 +10,6 @@ export const authorizeRoutes = [
     '/write/new',
     '/edit',
     '/my-blogs',
-    '/'
+    '/',
+    '/blogs'
 ]
