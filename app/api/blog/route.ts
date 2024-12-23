@@ -27,7 +27,11 @@ export async function POST(request: Request) {
             );
         }
 
-        return NextResponse.json({ message: 'Blog created successfully!', data: blog });
+        return NextResponse.json({
+            message: 'Blog created successfully!',
+            data: blog, 
+        });
+        
 
     } catch (error: any) {
         return NextResponse.json(

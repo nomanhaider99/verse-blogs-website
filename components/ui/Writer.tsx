@@ -34,7 +34,6 @@ const Writer = () => {
     }
   });
 
-  // Update form value for ReactQuill
   const handleQuillChange = (value: string) => {
     setContent(value);
     setValue('content', value, { shouldValidate: true });
@@ -60,23 +59,27 @@ const Writer = () => {
     setIsLoading(true);
 
     await createBlog(dataWithUserId)
-      .then(() => {
+      .then((blog) => {
+        if (!blog.id) {
+          throw new Error('Blog ID is missing');
+        }
+
         toast({
           title: "Success: Blog Created Successfully",
-          description: "You can now view your blog, and start watching blogs.",
+          description: "You can now view your blog.",
         });
         resetField("title");
         resetField("description");
         resetField("content");
-        router.refresh();
+        router.push(`/blogs/${blog.id}`);
       })
       .catch((err) => {
         toast({
           title: "Error: Blog Creation Failed",
-          description: JSON.stringify(err),
+          description: err.message,
           variant: 'destructive',
         });
-        console.log(err);
+        console.error(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -104,7 +107,7 @@ const Writer = () => {
               type="text"
               placeholder="The Ultimate Guide to Frontend Development"
               {...register('title')}
-              disabled={isLoading} // Disable input when loading
+              disabled={isLoading}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
@@ -113,7 +116,7 @@ const Writer = () => {
               placeholder="Explore the essential skills every frontend developer needs to master in 2025."
               className="h-[7vw]"
               {...register('description')}
-              disabled={isLoading} // Disable input when loading
+              disabled={isLoading}
             />
           </div>
           <div className="w-full flex flex-col gap-1">
@@ -133,7 +136,7 @@ const Writer = () => {
             </div>
           </div>
           <div className="w-full mt-10">
-            <Button text="Post Blog" type="submit"  />
+            <Button text="Post Blog" type="submit" />
           </div>
         </div>
       </form>
