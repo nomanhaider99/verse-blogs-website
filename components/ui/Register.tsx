@@ -97,7 +97,7 @@ const RegisterForm = () => {
                             outline
                             isStatic
                             icon={FaGoogle}
-                            onClick={() => socialSignIn("google")}
+                            onClick={async() => await socialSignIn("google")}
                         />
                     </div>
                     <div className='flex justify-center py-2'>OR</div>
