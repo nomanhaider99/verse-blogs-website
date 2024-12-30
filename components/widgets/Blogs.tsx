@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Blog, { BlogProps } from '../ui/Blog';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { getBlogs } from '@/app/actions/getBlogs';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<BlogProps[]>([]);
@@ -12,7 +13,7 @@ const Blogs = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch('/api/blogs');
+        const res = await getBlogs();
         if (!res.ok) throw new Error('Failed to fetch blogs');
         const result = await res.json();
         setBlogs(result.data);
